@@ -53,12 +53,35 @@
           </masonry-wall>
         </div>
       </div>
+      <q-page-sticky position="bottom-right" :offset="fabPos">
+        <!-- v-touch-pan.prevent.mouse="moveFab" -->
+        <q-fab size="12" icon="settings" direction="up">
+          <q-fab-action @click="$q.dark.toggle()">
+            <template v-slot:icon>
+              <q-icon :name="$q.dark.isActive ? 'light_mode' : 'dark_mode'" />
+            </template>
+            <template v-slot:label>
+              {{ $q.dark.isActive ? t('lightMode') : t('darkMode') }}
+            </template>
+          </q-fab-action>
+
+          <q-fab-action @click="toggleLocale">
+            <template v-slot:icon>
+              <q-icon name="translate" />
+            </template>
+            <template v-slot:label>
+              {{ locale == 'en' ? 'Français' : 'English' }}
+            </template>
+          </q-fab-action>
+        </q-fab>
+      </q-page-sticky>
     </div>
   </q-page>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import EducationCard from 'src/components/EducationCard.vue';
 import ExperienceCard from 'src/components/ExperienceCard.vue';
 import SkillsCard from 'src/components/SkillsCard.vue';
@@ -68,18 +91,30 @@ export default defineComponent({
   components: { EducationCard, ExperienceCard, SkillsCard, ProjectsCard },
   name: 'IndexPage',
   setup() {
+    const { locale, t } = useI18n({ useScope: 'global' });
     const cards = ref([
       { id: 'education' },
       { id: 'experience' },
       { id: 'skills' },
       { id: 'projects' },
     ]);
+    const fabPos = ref([100, 25]);
 
     return {
+      fabPos,
       cards,
-      openInNewTab(url) {
+      openInNewTab(url: string) {
         window.open(url, 'blank_');
       },
+      toggleLocale() {
+        if (locale.value == 'en') {
+          locale.value = 'fr';
+        } else {
+          locale.value = 'en';
+        }
+      },
+      t,
+      locale,
     };
   },
 });
