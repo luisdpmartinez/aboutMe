@@ -101,7 +101,7 @@
 
 <script lang="ts">
 import { CometChat } from '@cometchat-pro/chat';
-import { defineComponent, ref, onBeforeUnmount, onMounted, watch } from 'vue';
+import { defineComponent, ref, onBeforeUnmount, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
@@ -294,7 +294,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
->>> iframe {
+:deep() iframe {
   border: none !important;
 }
 </style>
