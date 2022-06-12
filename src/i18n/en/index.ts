@@ -16,4 +16,11 @@ export default {
     text5: 'Development of a work-time tracking app',
     text6: 'Development of a on-site visits time-tracking app',
   },
+  educationCard: {
+    education: 'Education',
+    title1: 'Bachelor of computer science',
+    text1: '3 years plus 3 internships of 4 months each',
+    title2: 'Bachelor of management science',
+    text2: '3 years, a certificate for each year',
+  },
 };

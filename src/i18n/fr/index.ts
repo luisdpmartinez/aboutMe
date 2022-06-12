@@ -17,4 +17,11 @@ export default {
     text6:
       "Conception d'un outil facilitant le suivi des entrées et sorties de visiteurs",
   },
+  educationCard: {
+    education: 'Formation',
+    title1: 'Baccalauréat en informatique et génie logiciel',
+    text1: '3 ans plus 3 stages de 4 mois chacun',
+    title2: 'Baccalauréat en sciences de la gestion',
+    text2: '3 ans, un certificat dans un domaine différent pour chaque année',
+  },
 };
