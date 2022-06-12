@@ -101,20 +101,21 @@
 
 <script lang="ts">
 import { CometChat } from '@cometchat-pro/chat';
-import { defineComponent, ref, onBeforeUnmount, watch } from 'vue';
+import { defineComponent, ref, onBeforeUnmount, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'CometChat',
   setup() {
     const router = useRouter();
+    const route = useRoute();
     const { t } = useI18n({ useScope: 'global' });
     const loading = ref(false);
     const joinedCall = ref(false);
     const tokenForm = ref(null);
     const tokenDialog = ref(true);
-    const userToken = ref('');
+    const userToken = ref(route.params.token ? route.params.token : '');
     const microphoneStatus = ref(true);
     const cameraStatus = ref(true);
     const microphonesList = ref([]);

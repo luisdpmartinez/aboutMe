@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
       {
-        path: 'video-call',
+        path: 'video-call/:token?',
         component: () => import('pages/VideoCallPage.vue'),
       },
     ],
