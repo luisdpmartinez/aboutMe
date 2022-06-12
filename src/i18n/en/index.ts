@@ -29,4 +29,8 @@ export default {
     other: 'Other',
     tools: 'Tools',
   },
+  projectsCard: {
+    projects: 'Projects',
+    videoCallApp: 'Video conference app',
+  },
 };

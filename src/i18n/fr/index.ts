@@ -30,4 +30,8 @@ export default {
     other: 'Autre',
     tools: 'Outils',
   },
+  projectsCard: {
+    projects: 'Projets',
+    videoCallApp: 'Application de video conférence',
+  },
 };
