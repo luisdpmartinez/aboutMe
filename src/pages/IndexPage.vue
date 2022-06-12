@@ -98,7 +98,7 @@ export default defineComponent({
       { id: 'skills' },
       { id: 'projects' },
     ]);
-    const fabPos = ref([100, 25]);
+    const fabPos = ref([75, 25]);
 
     return {
       fabPos,

@@ -24,4 +24,10 @@ export default {
     title2: 'Baccalauréat en sciences de la gestion',
     text2: '3 ans, un certificat dans un domaine différent pour chaque année',
   },
+  skillsCard: {
+    skills: 'Connaissances',
+    environments: 'Environnements',
+    other: 'Autre',
+    tools: 'Outils',
+  },
 };

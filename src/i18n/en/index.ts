@@ -23,4 +23,10 @@ export default {
     title2: 'Bachelor of management science',
     text2: '3 years, a certificate for each year',
   },
+  skillsCard: {
+    skills: 'Skills',
+    environments: 'Environments',
+    other: 'Other',
+    tools: 'Tools',
+  },
 };
