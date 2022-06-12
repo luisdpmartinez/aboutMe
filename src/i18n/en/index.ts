@@ -33,4 +33,13 @@ export default {
     projects: 'Projects',
     videoCallApp: 'Video conference app',
   },
+  videoCall: {
+    cometChat: {
+      userToken: 'User token',
+      enterSomething: 'Please enter something',
+      goHome: 'Go home',
+      enter: 'Enter',
+      pleaseContactMe: 'Please contact me to get a token',
+    },
+  },
 };

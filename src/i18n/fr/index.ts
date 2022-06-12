@@ -34,4 +34,13 @@ export default {
     projects: 'Projets',
     videoCallApp: 'Application de video conférence',
   },
+  videoCall: {
+    cometChat: {
+      userToken: "Jeton d'utilisateur",
+      enterSomething: 'Veuillez entrer quelque chose',
+      goHome: 'Retour',
+      enter: 'Entrer',
+      pleaseContactMe: 'Veuillez me contacter pour obtenir un jeton',
+    },
+  },
 };
