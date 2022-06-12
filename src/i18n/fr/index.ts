@@ -1,7 +1,20 @@
-// This is just an example,
-// so you can safely delete all default props below
-
 export default {
   darkMode: 'Mode sombre',
   lightMode: 'Mode clair',
+  experienceCard: {
+    experience: 'Expérience',
+    year: 'an',
+    title1: 'Développeur',
+    text1: "Développement web Full-Stack d'une application web financière",
+    text2:
+      "Développement Front-end d'une application web de collaboration par vidéoconférence",
+    title2: 'Analyste',
+    text3: 'Analyste en bases de données',
+    text4: "Développement web Full-Stack d'une application d'éco-fiscalité",
+    title3: 'Stage',
+    text5:
+      "Conception d'un outil facilitant l'entrée et l'approbation de feuilles de temps",
+    text6:
+      "Conception d'un outil facilitant le suivi des entrées et sorties de visiteurs",
+  },
 };
