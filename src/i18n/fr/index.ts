@@ -32,7 +32,8 @@ export default {
   },
   projectsCard: {
     projects: 'Projets',
-    videoCallApp: 'Application de video conférence',
+    videoCallApp: 'Video conférence',
+    availabilityApp: 'Agenda de disponibilité',
   },
   videoCall: {
     cometChat: {
@@ -42,5 +43,12 @@ export default {
       enter: 'Entrer',
       pleaseContactMe: 'Veuillez me contacter pour obtenir un jeton',
     },
+  },
+  availability: {
+    back: 'Retour',
+    title: 'Mes disponibilités',
+    previous: 'Précédente',
+    today: "Aujourd'hui",
+    next: 'Prochaine',
   },
 };

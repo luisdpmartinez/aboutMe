@@ -7,13 +7,21 @@
       </div>
     </q-card-section>
     <q-card-section>
-      <q-list separator>
+      <q-list>
         <q-item>
           <q-btn
             outline
             :label="t('projectsCard.videoCallApp')"
             icon="videocam"
             @click="router.push('/video-call')"
+          />
+        </q-item>
+        <q-item>
+          <q-btn
+            outline
+            :label="t('projectsCard.availabilityApp')"
+            icon="event"
+            @click="router.push('/availability')"
           />
         </q-item>
       </q-list>

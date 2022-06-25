@@ -10,6 +10,10 @@ const routes: RouteRecordRaw[] = [
         path: 'video-call/:token?',
         component: () => import('pages/VideoCallPage.vue'),
       },
+      {
+        path: 'availability/',
+        component: () => import('pages/AvailabilityPage.vue'),
+      },
     ],
   },
 

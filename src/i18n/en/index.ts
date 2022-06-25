@@ -31,7 +31,8 @@ export default {
   },
   projectsCard: {
     projects: 'Projects',
-    videoCallApp: 'Video conference app',
+    videoCallApp: 'Video conference',
+    availabilityApp: 'Availability schedule',
   },
   videoCall: {
     cometChat: {
@@ -41,5 +42,12 @@ export default {
       enter: 'Enter',
       pleaseContactMe: 'Please contact me to get a token',
     },
+  },
+  availability: {
+    back: 'Back',
+    title: 'My availability',
+    previous: 'Previous',
+    today: 'Today',
+    next: 'Next',
   },
 };
