@@ -260,6 +260,15 @@ export default defineComponent({
           duration: 90,
           bgcolor: 'red',
         },
+        {
+          id: 13,
+          title: this.t('availability.notAvailable'),
+          details: '',
+          date: '2022-07-08',
+          time: '9:00',
+          duration: 60,
+          bgcolor: 'red',
+        },
       ];
     },
     eventsMap() {
