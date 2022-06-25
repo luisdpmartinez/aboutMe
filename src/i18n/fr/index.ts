@@ -48,7 +48,7 @@ export default {
     back: 'Retour',
     title: 'Mes disponibilités',
     previous: 'Précédente',
-    today: "Aujourd'hui",
+    today: 'Semaine actuelle',
     next: 'Prochaine',
   },
 };

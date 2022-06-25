@@ -23,10 +23,12 @@
       <div class="col-12 q-pb-md">
         <div class="row justify-around">
           <q-btn
-            outline
+            :outline="!previousDisabled"
+            :flat="previousDisabled"
             :label="t('availability.previous')"
-            icon="event"
+            icon="arrow_back"
             @click="onPrev"
+            :disable="previousDisabled"
           />
 
           <q-btn
@@ -37,10 +39,12 @@
           />
 
           <q-btn
-            outline
             :label="t('availability.next')"
-            icon="event"
+            icon-right="arrow_forward"
             @click="onNext"
+            :outline="!nextDisabled"
+            :flat="nextDisabled"
+            :disable="nextDisabled"
           />
         </div>
       </div>
@@ -51,14 +55,16 @@
         <q-calendar-day
           ref="calendar"
           v-model="selectedDate"
+          no-active-date
           :dark="$q.dark.isActive"
           :locale="locale == 'fr' ? 'fr' : 'en-US'"
           :interval-start="8"
           :interval-count="12"
           view="week"
-          :interval-height="100"
           animated
-          :disabled-weekdays="[0, 6]"
+          :weekdays="[1, 2, 3, 4, 5]"
+          transition-next="slide-left"
+          transition-prev="slide-right"
           @change="onChange"
           @moved="onMoved"
           @click-date="onClickDate"
@@ -109,7 +115,24 @@ export default defineComponent({
     return {
       selectedDate: today(),
       nowDate: addToDate(parseTimestamp(today()), { day: 0 }).date,
+      nowDateWeek: {},
     };
+  },
+  computed: {
+    previousDisabled() {
+      var date1 = new Date(this.nowDate);
+      var date2 = new Date(this.nowDateWeek.start);
+      var difference = date1.getTime() - date2.getTime();
+      var days = Math.ceil(difference / (1000 * 3600 * 24));
+      return days > 0;
+    },
+    nextDisabled() {
+      var date1 = new Date(this.nowDate);
+      var date2 = new Date(this.nowDateWeek.start);
+      var difference = date1.getTime() - date2.getTime();
+      var days = Math.ceil(difference / (1000 * 3600 * 24));
+      return days < -7;
+    },
   },
   methods: {
     onToday() {
@@ -127,6 +150,7 @@ export default defineComponent({
     },
     onChange(data) {
       console.log('onChange', data);
+      this.nowDateWeek = Object.assign({}, data);
     },
     onClickDate(data) {
       console.log('onClickDate', data);

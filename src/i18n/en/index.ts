@@ -47,7 +47,7 @@ export default {
     back: 'Back',
     title: 'My availability',
     previous: 'Previous',
-    today: 'Today',
+    today: 'Current week',
     next: 'Next',
   },
 };
