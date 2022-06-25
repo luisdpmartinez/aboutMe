@@ -32,10 +32,12 @@
           />
 
           <q-btn
-            outline
+            :outline="!previousDisabled"
+            :flat="previousDisabled"
             :label="t('availability.today')"
             icon="event"
             @click="onToday"
+            :disable="previousDisabled"
           />
 
           <q-btn
@@ -282,7 +284,6 @@ export default defineComponent({
       });
       return map;
     },
-
     previousDisabled() {
       var date1 = new Date(this.nowDate);
       var date2 = new Date(this.nowDateWeek.start);
