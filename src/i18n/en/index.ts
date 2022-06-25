@@ -49,5 +49,7 @@ export default {
     previous: 'Previous',
     today: 'Current week',
     next: 'Next',
+    notAvailable: 'Unavailable',
+    holiday: 'On holiday',
   },
 };

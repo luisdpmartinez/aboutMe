@@ -50,5 +50,7 @@ export default {
     previous: 'Précédente',
     today: 'Semaine actuelle',
     next: 'Prochaine',
+    notAvailable: 'Indisponible',
+    holiday: 'En congé',
   },
 };
