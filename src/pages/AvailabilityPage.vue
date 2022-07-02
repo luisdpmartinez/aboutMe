@@ -52,7 +52,7 @@
       </div>
       <div
         class="col-12"
-        style="display: flex; max-width: 1200px; width: 100%; height: 650px"
+        style="display: flex; max-width: 1200px; width: 100%; height: 100%"
       >
         <q-calendar-day
           ref="calendar"
