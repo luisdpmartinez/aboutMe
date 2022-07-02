@@ -107,9 +107,11 @@
 </template>
 
 <script>
+import { useQuery } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { api } from 'boot/axios';
+//import { api } from 'boot/axios';
 import {
   QCalendarDay,
   addToDate,
@@ -130,7 +132,27 @@ export default defineComponent({
   setup() {
     const { locale, t } = useI18n({ useScope: 'global' });
     const router = useRouter();
+    const { result, loading, error } = useQuery(gql`
+      query getEvents {
+        events {
+          data {
+            id
+            attributes {
+              title_fr
+              title_en
+              time
+              duration
+              bgcolor
+              date
+            }
+          }
+        }
+      }
+    `);
     return {
+      result,
+      loading,
+      error,
       t,
       locale,
       router,
@@ -148,32 +170,33 @@ export default defineComponent({
       selectedDate: today(),
       nowDate: parseTimestamp(today()).date,
       nowDateWeek: {},
-      data: [],
     };
   },
   created() {
-    api.defaults.headers.common['Authorization'] =
-      'Bearer ' + import.meta.env.VITE_STRAPI_TOKEN;
-    api.get(import.meta.env.VITE_STRAPI_URL + 'api/events').then((response) => {
-      this.data = response.data;
-    });
+    // api.defaults.headers.common['Authorization'] =
+    //   'Bearer ' + import.meta.env.VITE_STRAPI_TOKEN;
+    // api.get(import.meta.env.VITE_STRAPI_URL + 'api/events').then((response) => {
+    //   this.data = response.data.data;
+    // });
   },
   computed: {
     events() {
       let list = [];
-      this.data.data.forEach((item) => {
-        list.push({
-          id: item.id,
-          date: item.attributes.date,
-          title:
-            this.locale == 'fr'
-              ? item.attributes.title_fr
-              : item.attributes.title_en,
-          time: item.attributes.time,
-          duration: item.attributes.duration,
-          bgcolor: item.attributes.bgcolor,
+      if (this.result) {
+        this.result.events.data.forEach((item) => {
+          list.push({
+            id: item.id,
+            date: item.attributes.date,
+            title:
+              this.locale == 'fr'
+                ? item.attributes.title_fr
+                : item.attributes.title_en,
+            time: item.attributes.time,
+            duration: item.attributes.duration,
+            bgcolor: item.attributes.bgcolor,
+          });
         });
-      });
+      }
       return list;
     },
     eventsMap() {

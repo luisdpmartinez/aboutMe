@@ -1,3 +1,6 @@
 {
-  "@quasar/qcalendar": {}
+  "@quasar/qcalendar": {},
+  "@quasar/apollo": {
+    "typescript": true
+  }
 }
