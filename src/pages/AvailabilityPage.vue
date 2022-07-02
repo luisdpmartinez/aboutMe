@@ -109,6 +109,7 @@
 <script>
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { api } from 'boot/axios';
 import {
   QCalendarDay,
   addToDate,
@@ -147,130 +148,29 @@ export default defineComponent({
       selectedDate: today(),
       nowDate: parseTimestamp(today()).date,
       nowDateWeek: {},
+      events: [],
     };
   },
+  created() {
+    api.defaults.headers.common['Authorization'] =
+      'Bearer ' + import.meta.env.VITE_STRAPI_TOKEN;
+    api.get(import.meta.env.VITE_STRAPI_URL + 'api/events').then((response) => {
+      response.data.data.forEach((item) => {
+        this.events.push({
+          id: item.id,
+          date: item.attributes.date,
+          title:
+            this.locale == 'fr'
+              ? item.attributes.title_fr
+              : item.attributes.title_en,
+          time: item.attributes.time,
+          duration: item.attributes.duration,
+          bgcolor: item.attributes.bgcolor,
+        });
+      });
+    });
+  },
   computed: {
-    events() {
-      return [
-        {
-          id: 1,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-06-27',
-          time: '13:00',
-          duration: 60,
-          bgcolor: 'red',
-        },
-        {
-          id: 2,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-06-27',
-          time: '9:00',
-          duration: 60,
-          bgcolor: 'red',
-        },
-        {
-          id: 3,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-06-28',
-          time: '11:00',
-          duration: 60,
-          bgcolor: 'red',
-        },
-        {
-          id: 4,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-06-28',
-          time: '8:30',
-          duration: 90,
-          bgcolor: 'red',
-        },
-        {
-          id: 5,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-06-29',
-          time: '9:00',
-          duration: 60,
-          bgcolor: 'red',
-        },
-        {
-          id: 6,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-06-30',
-          time: '8:30',
-          duration: 90,
-          bgcolor: 'red',
-        },
-        {
-          id: 7,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-06-30',
-          time: '13:00',
-          duration: 120,
-          bgcolor: 'red',
-        },
-        {
-          id: 8,
-          title: this.t('availability.holiday'),
-          details: '',
-          date: '2022-07-01',
-          time: '8:00',
-          duration: 480,
-          bgcolor: 'blue',
-        },
-        {
-          id: 9,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-07-04',
-          time: '9:00',
-          duration: 60,
-          bgcolor: 'red',
-        },
-        {
-          id: 10,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-07-05',
-          time: '8:30',
-          duration: 90,
-          bgcolor: 'red',
-        },
-        {
-          id: 11,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-07-06',
-          time: '9:00',
-          duration: 60,
-          bgcolor: 'red',
-        },
-        {
-          id: 12,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-07-07',
-          time: '8:30',
-          duration: 90,
-          bgcolor: 'red',
-        },
-        {
-          id: 13,
-          title: this.t('availability.notAvailable'),
-          details: '',
-          date: '2022-07-08',
-          time: '9:00',
-          duration: 60,
-          bgcolor: 'red',
-        },
-      ];
-    },
     eventsMap() {
       const map = {};
       // this.events.forEach(event => (map[ event.date ] = map[ event.date ] || []).push(event))
