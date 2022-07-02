@@ -9,7 +9,7 @@ export /* async */ function getClientOptions(
     // General options.
     <ApolloClientOptions<unknown>>{
       link: createHttpLink({
-        uri: 'graphql',
+        uri: import.meta.env.VITE_STRAPI_URL + 'graphql',
         headers: {
           Authorization: 'Bearer ' + import.meta.env.VITE_STRAPI_TOKEN,
         },
