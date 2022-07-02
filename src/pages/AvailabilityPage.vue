@@ -134,7 +134,7 @@ export default defineComponent({
     const router = useRouter();
     const { result, loading, error } = useQuery(gql`
       query getEvents {
-        events {
+        events(sort: "date:desc", pagination: { limit: 20 }) {
           data {
             id
             attributes {
