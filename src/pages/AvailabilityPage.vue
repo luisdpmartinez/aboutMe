@@ -148,15 +148,21 @@ export default defineComponent({
       selectedDate: today(),
       nowDate: parseTimestamp(today()).date,
       nowDateWeek: {},
-      events: [],
+      data: [],
     };
   },
   created() {
     api.defaults.headers.common['Authorization'] =
       'Bearer ' + import.meta.env.VITE_STRAPI_TOKEN;
     api.get(import.meta.env.VITE_STRAPI_URL + 'api/events').then((response) => {
-      response.data.data.forEach((item) => {
-        this.events.push({
+      this.data = response.data;
+    });
+  },
+  computed: {
+    events() {
+      let list = [];
+      this.data.data.forEach((item) => {
+        list.push({
           id: item.id,
           date: item.attributes.date,
           title:
@@ -168,9 +174,8 @@ export default defineComponent({
           bgcolor: item.attributes.bgcolor,
         });
       });
-    });
-  },
-  computed: {
+      return list;
+    },
     eventsMap() {
       const map = {};
       // this.events.forEach(event => (map[ event.date ] = map[ event.date ] || []).push(event))
