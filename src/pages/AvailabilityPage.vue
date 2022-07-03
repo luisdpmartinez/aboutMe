@@ -20,7 +20,7 @@
 
     <div class="row" style="max-width: 1200px; width: 100%; height: 100%">
       <div class="col-12 q-pb-md text-h4">{{ t('availability.title') }}</div>
-      <div class="col-12 q-pb-md" v-if="!loading">
+      <div class="col-12 q-pb-md">
         <div class="row justify-around">
           <q-btn
             :outline="!previousDisabled"
@@ -102,7 +102,7 @@
           </template>
         </q-calendar-day>
         <q-inner-loading
-          :showing="!loading"
+          :showing="loading"
           :label="t('availability.loading')"
           label-style="font-size: 1.1em"
         />
