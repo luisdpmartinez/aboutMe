@@ -20,7 +20,7 @@
 
     <div class="row" style="max-width: 1200px; width: 100%; height: 100%">
       <div class="col-12 q-pb-md text-h4">{{ t('availability.title') }}</div>
-      <div class="col-12 q-pb-md">
+      <div class="col-12 q-pb-md" v-if="!loading">
         <div class="row justify-around">
           <q-btn
             :outline="!previousDisabled"
@@ -51,6 +51,60 @@
         </div>
       </div>
       <div
+        class="q-pa-md"
+        v-if="loading"
+        style="max-width: 1200px; width: 100%; height: 100%"
+      >
+        <q-markup-table>
+          <thead>
+            <tr>
+              <th class="text-left">
+                <q-skeleton animation="pulse" type="text" />
+              </th>
+              <th class="text-right">
+                <q-skeleton animation="pulse" type="text" />
+              </th>
+              <th class="text-right">
+                <q-skeleton animation="pulse" type="text" />
+              </th>
+              <th class="text-right">
+                <q-skeleton animation="pulse" type="text" />
+              </th>
+              <th class="text-right">
+                <q-skeleton animation="pulse" type="text" />
+              </th>
+              <th class="text-right">
+                <q-skeleton animation="pulse" type="text" />
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr v-for="n in 5" :key="n">
+              <td class="text-left">
+                <q-skeleton animation="pulse" type="text" width="85px" />
+              </td>
+              <td class="text-right">
+                <q-skeleton animation="pulse" type="text" width="50px" />
+              </td>
+              <td class="text-right">
+                <q-skeleton animation="pulse" type="text" width="35px" />
+              </td>
+              <td class="text-right">
+                <q-skeleton animation="pulse" type="text" width="65px" />
+              </td>
+              <td class="text-right">
+                <q-skeleton animation="pulse" type="text" width="25px" />
+              </td>
+              <td class="text-right">
+                <q-skeleton animation="pulse" type="text" width="85px" />
+              </td>
+            </tr>
+          </tbody>
+        </q-markup-table>
+      </div>
+      <div
+        v-else
         class="col-12"
         style="display: flex; max-width: 1200px; width: 100%; height: 100%"
       >
