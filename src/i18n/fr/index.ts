@@ -52,5 +52,6 @@ export default {
     next: 'Prochaine',
     notAvailable: 'Indisponible',
     holiday: 'En congé',
+    loading: 'Veuillez patienter...',
   },
 };
